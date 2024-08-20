@@ -1,2 +1,2 @@
-tests/lib
+source/tests/lib
 cmake-build-debug

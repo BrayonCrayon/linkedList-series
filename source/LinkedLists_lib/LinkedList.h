@@ -8,6 +8,9 @@
 class LinkedList
 {
 
+public:
+    int count;
+
 };
 
 #endif //LINKEDLIST_H

@@ -1,8 +1,6 @@
 #include <iostream>
-#include "Node.cpp"
-#include "LinkedList.cpp"
 #include <gtest/gtest.h>
-#include "tests/tests.cpp"
+#include "tests/test.cpp"
 using namespace std;
 
 int main(int argc, char* argv[]) {
