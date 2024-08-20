@@ -7,7 +7,12 @@
 
 TEST(initialization_test, basic_constructor)
 {
-    LinkedList linkList;
+    const LinkedList linkList;
     EXPECT_EQ(linkList.count, 0);
     EXPECT_EQ(linkList.item, nullptr);
 }
+//
+// TEST(initialization_tests, one_arg_constructor)
+// {
+//     LinkedListNode* node = ;
+// }

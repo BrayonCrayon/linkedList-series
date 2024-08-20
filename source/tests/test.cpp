@@ -5,5 +5,6 @@
 #define LINKED_LIST_TESTS
 
  #include "InitializationTests.cpp"
+ #include "NodeInitializationTests.cpp"
 
 #endif
