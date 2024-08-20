@@ -10,8 +10,10 @@ class LinkedList
 {
 
 public:
-    int count = 0;
-    LinkedListNode* item = nullptr;
+    int count;
+    LinkedListNode* item;
+
+    LinkedList();
 };
 
 #endif //LINKEDLIST_H
