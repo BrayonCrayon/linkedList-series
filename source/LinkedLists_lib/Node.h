@@ -6,12 +6,12 @@
 #define NODE_H
 
 
-
+template<typename T>
 class Node {
 public:
-    int* value;
-    explicit Node(int* pValue = nullptr);
-    Node(int &value);
+    T* value;
+    explicit Node(T* pValue = nullptr);
+    explicit Node(T &value);
 };
 
 

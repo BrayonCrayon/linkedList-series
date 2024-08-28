@@ -3,7 +3,7 @@
 //
 #include "LinkedList.h"
 
-LinkedList::LinkedList(): count(0), item(nullptr)
+template<typename T>
+LinkedList<T>::LinkedList(): count(0), item(nullptr)
 {
-
 }

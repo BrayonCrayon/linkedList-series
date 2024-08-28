@@ -3,11 +3,12 @@
 //
 #include <gtest/gtest.h>
 
-#include "LinkedList.h"
+#include "LinkedList.cpp"
+using namespace std;
 
 TEST(initialization_test, basic_constructor)
 {
-    const LinkedList linkList;
+    const LinkedList<int> linkList;
     EXPECT_EQ(linkList.count, 0);
     EXPECT_EQ(linkList.item, nullptr);
 }

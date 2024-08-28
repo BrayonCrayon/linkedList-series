@@ -4,10 +4,9 @@
 
 #include "Node.h"
 
-Node::Node(int* pValue)
-{
-    value = pValue;
-}
+template<typename T>
+Node<T>::Node(T* pValue) : value(pValue) {}
 
-Node::Node(int &value): value(&value) {}
+template<typename T>
+Node<T>::Node(T &value): value(&value) {}
 
