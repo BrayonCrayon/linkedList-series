@@ -4,4 +4,7 @@
 
 #include "Node.h"
 
-Node::Node() : value(nullptr){};
+Node::Node(int* pValue)
+{
+    value = pValue;
+};

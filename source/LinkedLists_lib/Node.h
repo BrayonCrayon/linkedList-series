@@ -10,7 +10,7 @@
 class Node {
 public:
     int* value;
-    Node();
+    explicit Node(int* pValue = nullptr);
 };
 
 
