@@ -7,4 +7,7 @@
 Node::Node(int* pValue)
 {
     value = pValue;
-};
+}
+
+Node::Node(int &value): value(&value) {}
+

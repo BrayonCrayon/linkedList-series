@@ -11,11 +11,20 @@ TEST(node_initialization_test, basic_constructor)
     EXPECT_EQ(testNode.value, nullptr);
 }
 
-TEST(node_initialization_tests, one_arg_constructor)
+TEST(node_initialization_tests, one_arg_pointer_constructor)
 {
     int value = 13;
     const Node testNode(&value);
 
     EXPECT_EQ(testNode.value, &value);
     EXPECT_EQ(*testNode.value, value);
+}
+
+TEST(node_initialization_tests, one_arg_value_constructor)
+{
+    int value = 13;
+    const Node testNode(value);
+
+    EXPECT_EQ(*testNode.value, value);
+    EXPECT_EQ(testNode.value, &value);
 }

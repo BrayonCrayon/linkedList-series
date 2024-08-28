@@ -11,6 +11,7 @@ class Node {
 public:
     int* value;
     explicit Node(int* pValue = nullptr);
+    Node(int &value);
 };
 
 
