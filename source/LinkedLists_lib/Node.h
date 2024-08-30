@@ -12,6 +12,10 @@ public:
     T* value;
     explicit Node(T* pValue = nullptr);
     explicit Node(T &value);
+    ~Node()
+    {
+        delete value;
+    }
 };
 
 

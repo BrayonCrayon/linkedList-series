@@ -15,6 +15,17 @@ public:
     Node<T>* item;
 
     LinkedList();
+
+    LinkedList(int values[])
+    {
+        count = 1;
+        *item = Node(values[0]);
+    }
+
+    ~LinkedList()
+    {
+        delete item;
+    }
 };
 
 #endif //LINKEDLIST_H
