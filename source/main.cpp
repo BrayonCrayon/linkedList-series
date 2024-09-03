@@ -1,5 +1,6 @@
-#include <iostream>
 #include <gtest/gtest.h>
+#include <Node.cpp>
+#include <LinkedList.cpp>
 #include "tests/test.cpp"
 using namespace std;
 

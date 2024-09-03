@@ -4,14 +4,13 @@ project(LinkedLists)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#add_executable(LinkedLists main.cpp)
-add_executable(LinkedLists_run source/main.cpp)
+set(SOURCES ./source/main.cpp)
+
+add_subdirectory(source/tests)
 
 include_directories(source/LinkedLists_lib)
 add_subdirectory(source/LinkedLists_lib)
-target_link_libraries(LinkedLists_run LinkedLists_lib)
 
 find_package(GTest)
-target_link_libraries(LinkedLists_lib gtest::gtest)
-
-add_subdirectory(source/tests)
+add_executable(LinkedLists_run source/main.cpp )
+target_link_libraries(LinkedLists_run PRIVATE LinkedLists_lib PUBLIC gtest::gtest)

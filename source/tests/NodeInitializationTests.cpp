@@ -1,10 +1,7 @@
 //
 // Created by bradyderoy on 8/20/24.
 //
-#include <gtest/gtest.h>
 #include <string>
-
-#include <Node.cpp>
 
 using namespace std;
 

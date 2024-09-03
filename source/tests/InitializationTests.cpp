@@ -1,9 +1,6 @@
 //
 // Created by bradyderoy on 8/15/24.
 //
-#include <gtest/gtest.h>
-
-#include "LinkedList.cpp"
 using namespace std;
 
 TEST(initialization_test, basic_constructor)

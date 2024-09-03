@@ -2,7 +2,7 @@
 // Created by bradyderoy on 8/20/24.
 //
 
-#include "Node.h"
+#include <Node.h>
 
 template<typename T>
 Node<T>::Node(T* pValue) : value(pValue) {}
