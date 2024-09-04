@@ -8,5 +8,5 @@ template<typename T>
 Node<T>::Node(T* pValue) : value(pValue) {}
 
 template<typename T>
-Node<T>::Node(T &value): value(&value) {}
+Node<T>::Node(T value): value(new T(value)) {}
 

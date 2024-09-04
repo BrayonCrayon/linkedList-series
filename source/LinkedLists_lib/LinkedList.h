@@ -19,7 +19,7 @@ public:
     LinkedList(int values[])
     {
         count = 1;
-        *item = Node(values[0]);
+        item = new Node(values[0]);
     }
 
     ~LinkedList()

@@ -3,7 +3,7 @@
 //
 using namespace std;
 
-TEST(initialization_test, basic_constructor)
+TEST(initialization_tests, basic_constructor)
 {
     const LinkedList<int> linkList;
     EXPECT_EQ(linkList.count, 0);
