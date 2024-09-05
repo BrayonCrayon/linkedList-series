@@ -15,6 +15,8 @@ public:
     explicit Node(T value);
     ~Node();
     Node* operator=(Node* rhs);
+
+    void setNext(T value);
 };
 
 

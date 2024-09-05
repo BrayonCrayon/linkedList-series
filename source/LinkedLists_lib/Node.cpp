@@ -23,3 +23,10 @@ Node<T>* Node<T>::operator=(Node* rhs)
     return this;
 }
 
+template <typename T>
+void Node<T>::setNext(T value)
+{
+    next = new Node(value);
+}
+
+
