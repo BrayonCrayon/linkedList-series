@@ -6,5 +6,6 @@
 
  #include "InitializationTests.cpp"
  #include "NodeInitializationTests.cpp"
+ #include "NodeNextTests.cpp"
 
 #endif

@@ -10,6 +10,7 @@ template<typename T>
 class Node {
 public:
     T* value;
+    Node* next;
     explicit Node(T* pValue = nullptr);
     explicit Node(T value);
     ~Node();
