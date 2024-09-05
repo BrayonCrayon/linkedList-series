@@ -7,10 +7,16 @@ template<typename T>
 LinkedList<T>::LinkedList(): count(0), item(nullptr) {}
 
 template<typename T>
-LinkedList<T>::LinkedList(int values[])
+LinkedList<T>::LinkedList(T values[])
 {
     count = 1;
-    item = new Node(values[0]);
+    Node temp = new Node(values[0]);
+    for(auto value:values)
+    {
+        item = new Node(value);
+        item->setNext(value);
+        temp = item->next;
+    }
 }
 
 template<typename T>
