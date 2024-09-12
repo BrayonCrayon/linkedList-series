@@ -20,6 +20,28 @@ LinkedList<T>::LinkedList(T values[], int size)
     }
 }
 
+template <typename T>
+LinkedList<T>::LinkedList(const LinkedList &list)
+{
+    if (list == nullptr) return;
+
+    Node<T>* temp;
+    item = new Node(list.item->value);
+    temp = item;
+    Node<T>* currentNext = list.item->next;
+
+    while(currentNext != nullptr)
+    {
+
+    }
+
+    // for(int i = 0; i < list->count; ++i )
+    // {
+    //
+    // }
+}
+
+
 template<typename T>
 LinkedList<T>::~LinkedList()
 {

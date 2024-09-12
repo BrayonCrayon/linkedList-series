@@ -34,3 +34,37 @@ TEST(initialization_tests, be_able_to_setup_linked_list)
         currentNode = currentNode->next;
     }
 }
+
+TEST(initialization_tests, be_able_to_cop_linked_list_to_another_linked_list)
+{
+    // A = listing being copied
+    int count = 5;
+    int values[count] = {1,2,3,4,5};
+    LinkedList A(values, count);
+    // B = new linked list
+    LinkedList B(A);
+
+    // get count of nodes in linked list A
+    // for loop for all nodes where i < count
+    // copy data from pointer to new node
+
+    Node<int>* aIter = A.item;
+    Node<int>* bIter = B.item;
+
+    for(int i = 0; i < count; ++i)
+    {
+        EXPECT_EQ(*aIter->value, *bIter->value);
+        aIter = aIter->next;
+        bIter = bIter->next;
+    }
+}
+
+TEST(initialization_tests, for_another_day)
+{
+    // A = listing being copied
+    // B = new linked list
+
+    // get count of nodes in linked list A
+    // for loop for all nodes where i < count
+    // copy data from a[i] to new node
+}

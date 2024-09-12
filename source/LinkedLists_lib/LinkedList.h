@@ -16,6 +16,7 @@ public:
 
     LinkedList();
     explicit LinkedList(T values[], int size);
+    LinkedList(const LinkedList &list);
     ~LinkedList();
 };
 
