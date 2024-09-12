@@ -15,7 +15,7 @@ public:
     Node<T>* item;
 
     LinkedList();
-    explicit LinkedList(T values[]);
+    explicit LinkedList(T values[], int size);
     ~LinkedList();
 };
 
