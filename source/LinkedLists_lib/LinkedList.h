@@ -19,7 +19,9 @@ public:
     LinkedList(const LinkedList &list);
     ~LinkedList();
 
-    T operator[](int index);
+    void add(T value, int pos);
+
+    Node<T>* operator[](int index);
 
 };
 

@@ -8,5 +8,6 @@
  #include "NodeInitializationTests.cpp"
  #include "NodeNextTests.cpp"
 #include "LinkedListOperatorsTests.cpp"
+#include "LinkedListBasicOperationTests.cpp"
 
 #endif

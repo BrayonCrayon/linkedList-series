@@ -11,6 +11,6 @@ TEST(linked_list_operators, square_brackets_operator)
 
     for(int i = 0; i < count; ++i)
     {
-        EXPECT_EQ(values[i], numberList[i]);
+        EXPECT_EQ(values[i], *numberList[i]->value);
     }
 }

@@ -40,7 +40,7 @@ LinkedList<T>::LinkedList(const LinkedList &list): count(0), item(nullptr)
 }
 
 template<typename T>
-T LinkedList<T>::operator[](int index)
+Node<T>* LinkedList<T>::operator[](int index)
 {
     int iteratorIndex = 0;
 
@@ -50,10 +50,23 @@ T LinkedList<T>::operator[](int index)
         temp = temp->next;
         ++iteratorIndex;
     }
-    return *temp->value;
+    return temp;
 }
 
+template<typename T>
+void LinkedList<T>::add(T value, int pos)
+{
 
+    // Node at position pos to be value
+    // link next node of original node at pos to next node of new pos
+
+    Node<T>* movingNode = this->operator[](pos);
+
+    Node<T>* newNode = new Node(value);
+
+    this->operator[](pos-1)->next = newNode;
+    newNode->next = movingNode;
+}
 
 template<typename T>
 LinkedList<T>::~LinkedList()
