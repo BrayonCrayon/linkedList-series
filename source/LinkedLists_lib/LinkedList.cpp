@@ -21,24 +21,22 @@ LinkedList<T>::LinkedList(T values[], int size)
 }
 
 template <typename T>
-LinkedList<T>::LinkedList(const LinkedList &list)
+LinkedList<T>::LinkedList(const LinkedList &list): count(0), item(nullptr)
 {
-    if (list == nullptr) return;
+    // if (list == nullptr) return;
 
-    Node<T>* temp;
-    item = new Node(list.item->value);
-    temp = item;
-    Node<T>* currentNext = list.item->next;
+    item = new Node(*list.item->value);
+    Node<T>* temp = item;
+    Node<T>* listToCopyIter = list.item->next;
+    ++this->count;
 
-    while(currentNext != nullptr)
+    while(listToCopyIter != nullptr)
     {
-
+        temp->setNext(*listToCopyIter->value);
+        temp = temp->next;
+        ++this->count;
+        listToCopyIter = listToCopyIter->next;
     }
-
-    // for(int i = 0; i < list->count; ++i )
-    // {
-    //
-    // }
 }
 
 

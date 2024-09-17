@@ -35,18 +35,13 @@ TEST(initialization_tests, be_able_to_setup_linked_list)
     }
 }
 
-TEST(initialization_tests, be_able_to_cop_linked_list_to_another_linked_list)
+TEST(initialization_tests, be_able_to_copy_linked_list_to_another_linked_list)
 {
-    // A = listing being copied
     int count = 5;
-    int values[count] = {1,2,3,4,5};
-    LinkedList A(values, count);
-    // B = new linked list
-    LinkedList B(A);
+    int values[count] = {1, 2, 3, 4, 5};
 
-    // get count of nodes in linked list A
-    // for loop for all nodes where i < count
-    // copy data from pointer to new node
+    LinkedList A(values, count);
+    LinkedList B(A);
 
     Node<int>* aIter = A.item;
     Node<int>* bIter = B.item;
@@ -57,6 +52,7 @@ TEST(initialization_tests, be_able_to_cop_linked_list_to_another_linked_list)
         aIter = aIter->next;
         bIter = bIter->next;
     }
+    EXPECT_EQ(A.count, B.count);
 }
 
 TEST(initialization_tests, for_another_day)
