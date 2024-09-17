@@ -39,6 +39,21 @@ LinkedList<T>::LinkedList(const LinkedList &list): count(0), item(nullptr)
     }
 }
 
+template<typename T>
+T LinkedList<T>::operator[](int index)
+{
+    int iteratorIndex = 0;
+
+    Node<T>* temp = item;
+    while(temp->next != nullptr && iteratorIndex != index)
+    {
+        temp = temp->next;
+        ++iteratorIndex;
+    }
+    return *temp->value;
+}
+
+
 
 template<typename T>
 LinkedList<T>::~LinkedList()

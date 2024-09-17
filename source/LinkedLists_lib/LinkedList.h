@@ -18,6 +18,9 @@ public:
     explicit LinkedList(T values[], int size);
     LinkedList(const LinkedList &list);
     ~LinkedList();
+
+    T operator[](int index);
+
 };
 
 #endif //LINKEDLIST_H
