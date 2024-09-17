@@ -2,6 +2,7 @@
 // Created by bradyderoy on 8/14/24.
 //
 #include <LinkedList.h>
+#include <stdexcept>
 
 template<typename T>
 LinkedList<T>::LinkedList(): count(0), item(nullptr) {}
@@ -54,17 +55,28 @@ Node<T>* LinkedList<T>::operator[](int index)
 }
 
 template<typename T>
-void LinkedList<T>::add(T value, int pos)
+void LinkedList<T>::add(T value, int index)
 {
+
+    if (index + 1 > this->count)
+    {
+        throw std::invalid_argument("Cannot add value at index: " + index);
+    }
 
     // Node at position pos to be value
     // link next node of original node at pos to next node of new pos
 
-    Node<T>* movingNode = this->operator[](pos);
+    Node<T>* movingNode = this->operator[](index);
 
     Node<T>* newNode = new Node(value);
 
-    this->operator[](pos-1)->next = newNode;
+    if(index == 0)
+    {
+        this->item = newNode;
+        newNode->next = movingNode;
+    }
+
+    this->operator[](index - 1)->next = newNode;
     newNode->next = movingNode;
 }
 
