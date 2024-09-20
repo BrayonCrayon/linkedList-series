@@ -14,3 +14,10 @@ TEST(linked_list_operators, square_brackets_operator)
         EXPECT_EQ(values[i], *numberList[i]->value);
     }
 }
+
+TEST(linked_list_operators, square_brakets_operator_will_return_nullptr_when_no_items_are_in_list)
+{
+    LinkedList<int> list;
+
+    EXPECT_EQ(list[0], nullptr);
+}

@@ -24,8 +24,6 @@ LinkedList<T>::LinkedList(T values[], int size)
 template <typename T>
 LinkedList<T>::LinkedList(const LinkedList &list): count(0), item(nullptr)
 {
-    // if (list == nullptr) return;
-
     item = new Node(*list.item->value);
     Node<T>* temp = item;
     Node<T>* listToCopyIter = list.item->next;
@@ -43,10 +41,15 @@ LinkedList<T>::LinkedList(const LinkedList &list): count(0), item(nullptr)
 template<typename T>
 Node<T>* LinkedList<T>::operator[](int index)
 {
+    if (index < 0)
+    {
+        return nullptr;
+    }
+
     int iteratorIndex = 0;
 
     Node<T>* temp = item;
-    while(temp->next != nullptr && iteratorIndex != index)
+    while(temp != nullptr && temp->next != nullptr && iteratorIndex != index)
     {
         temp = temp->next;
         ++iteratorIndex;
@@ -57,13 +60,12 @@ Node<T>* LinkedList<T>::operator[](int index)
 template<typename T>
 void LinkedList<T>::add(T value, int index)
 {
-    if (this->count == 0)
+    if (this->item == nullptr)
     {
         this->item = new Node(value);
         ++this->count;
         return;
     }
-
 
     if (index + 1 > this->count)
     {
@@ -71,17 +73,20 @@ void LinkedList<T>::add(T value, int index)
     }
 
     Node<T>* movingNode = this->operator[](index);
+    Node<T>* previousNode = this->operator[](index - 1);
+
     Node<T>* newNode = new Node(value);
+    newNode->next = movingNode;
 
-
-    if(index == 0)
+    if (previousNode != nullptr)
     {
-        this->item = newNode;
-        newNode->next = movingNode;
+        previousNode->next = newNode;
     }
 
-    this->operator[](index - 1)->next = newNode;
-    newNode->next = movingNode;
+    if(previousNode == nullptr)
+    {
+        this->item = newNode;
+    }
 
     ++this->count;
 }
