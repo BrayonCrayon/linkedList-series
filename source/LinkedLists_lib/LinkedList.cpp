@@ -57,18 +57,22 @@ Node<T>* LinkedList<T>::operator[](int index)
 template<typename T>
 void LinkedList<T>::add(T value, int index)
 {
+    if (this->count == 0)
+    {
+        this->item = new Node(value);
+        ++this->count;
+        return;
+    }
+
 
     if (index + 1 > this->count)
     {
         throw std::invalid_argument("Cannot add value at index: " + index);
     }
 
-    // Node at position pos to be value
-    // link next node of original node at pos to next node of new pos
-
     Node<T>* movingNode = this->operator[](index);
-
     Node<T>* newNode = new Node(value);
+
 
     if(index == 0)
     {
@@ -78,6 +82,14 @@ void LinkedList<T>::add(T value, int index)
 
     this->operator[](index - 1)->next = newNode;
     newNode->next = movingNode;
+
+    ++this->count;
+}
+
+template<typename T>
+void LinkedList<T>::add(T value)
+{
+    this->add(value, this->count - 1);
 }
 
 template<typename T>
