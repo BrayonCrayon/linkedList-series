@@ -29,7 +29,6 @@ LinkedList<T>::LinkedList(const LinkedList& list): count(0), item(nullptr)
     item = new Node(*list.item->value);
     Node<T>* temp = item;
     Node<T>* listToCopyIter = list.item->next;
-    ++this->count;
 
     while (listToCopyIter != nullptr)
     {
