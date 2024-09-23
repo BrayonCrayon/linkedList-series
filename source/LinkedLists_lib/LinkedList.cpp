@@ -4,17 +4,19 @@
 #include <LinkedList.h>
 #include <stdexcept>
 
-template<typename T>
-LinkedList<T>::LinkedList(): count(0), item(nullptr) {}
+template <typename T>
+LinkedList<T>::LinkedList(): count(0), item(nullptr)
+{
+}
 
-template<typename T>
+template <typename T>
 LinkedList<T>::LinkedList(T values[], int size)
 {
     count = size;
     Node<T>* temp;
     item = new Node(values[0]);
     temp = item;
-    for(int i = 1; i < size; ++i)
+    for (int i = 1; i < size; ++i)
     {
         temp->setNext(values[i]);
         temp = temp->next;
@@ -22,14 +24,14 @@ LinkedList<T>::LinkedList(T values[], int size)
 }
 
 template <typename T>
-LinkedList<T>::LinkedList(const LinkedList &list): count(0), item(nullptr)
+LinkedList<T>::LinkedList(const LinkedList& list): count(0), item(nullptr)
 {
     item = new Node(*list.item->value);
     Node<T>* temp = item;
     Node<T>* listToCopyIter = list.item->next;
     ++this->count;
 
-    while(listToCopyIter != nullptr)
+    while (listToCopyIter != nullptr)
     {
         temp->setNext(*listToCopyIter->value);
         temp = temp->next;
@@ -38,7 +40,7 @@ LinkedList<T>::LinkedList(const LinkedList &list): count(0), item(nullptr)
     }
 }
 
-template<typename T>
+template <typename T>
 Node<T>* LinkedList<T>::operator[](int index)
 {
     if (index < 0)
@@ -49,7 +51,7 @@ Node<T>* LinkedList<T>::operator[](int index)
     int iteratorIndex = 0;
 
     Node<T>* temp = item;
-    while(temp != nullptr && temp->next != nullptr && iteratorIndex != index)
+    while (temp != nullptr && temp->next != nullptr && iteratorIndex != index)
     {
         temp = temp->next;
         ++iteratorIndex;
@@ -57,7 +59,7 @@ Node<T>* LinkedList<T>::operator[](int index)
     return temp;
 }
 
-template<typename T>
+template <typename T>
 void LinkedList<T>::add(T value, int index)
 {
     if (this->item == nullptr)
@@ -83,7 +85,7 @@ void LinkedList<T>::add(T value, int index)
         previousNode->next = newNode;
     }
 
-    if(previousNode == nullptr)
+    if (previousNode == nullptr)
     {
         this->item = newNode;
     }
@@ -91,35 +93,48 @@ void LinkedList<T>::add(T value, int index)
     ++this->count;
 }
 
-template<typename T>
+template <typename T>
 void LinkedList<T>::add(T value)
 {
     this->add(value, this->count);
 }
 
 template <typename T>
-T LinkedList<T>::remove(int n)
+T LinkedList<T>::remove(const int n)
 {
     Node<T>* nodeToRemove = this->operator[](n);
 
-    if(nodeToRemove == nullptr)
+    if (nodeToRemove == nullptr)
     {
         throw std::invalid_argument("cannot find node to remove");
     }
 
     Node<T>* previousNode = this->operator[](n - 1);
 
-    previousNode->next = nodeToRemove->next;
+    if (nodeToRemove->next != nullptr)
+    {
+        previousNode->next = nodeToRemove->next;
+        nodeToRemove->next = nullptr;
+    }
 
-    nodeToRemove->next = nullptr;
-    T value = *nodeToRemove->value;
+    T value(*nodeToRemove->value);
     delete nodeToRemove;
+
+    if (nodeToRemove == item)
+    {
+        item = nullptr;
+    }
+
+    --this->count;
 
     return value;
 }
 
-template<typename T>
+template <typename T>
 LinkedList<T>::~LinkedList()
 {
-    delete item;
+    if (item != nullptr)
+    {
+        delete item;
+    }
 }

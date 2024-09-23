@@ -75,6 +75,30 @@ TEST(linked_list_basic_operations, it_throws_error_when_value_doesnt_exist)
     });
 }
 
+TEST(linked_list_basic_operations, it_throws_error_when_index_negative)
+{
+    LinkedList<int> list;
+
+    EXPECT_ANY_THROW({
+        list.remove(-1);
+    });
+}
+
+TEST(linked_list_basic_operations, it_decrements_count_when_item_removed)
+{
+    LinkedList<int> list;
+
+    EXPECT_EQ(0, list.count);
+
+    list.add(1);
+
+    EXPECT_EQ(1, list.count);
+
+    list.remove(0);
+
+    EXPECT_EQ(0, list.count);
+}
+
 TEST(linked_list_basic_operations, it_configures_list_as_expected)
 {
     LinkedList<int> list;
