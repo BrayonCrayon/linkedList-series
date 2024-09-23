@@ -67,7 +67,7 @@ void LinkedList<T>::add(T value, int index)
         return;
     }
 
-    if (index + 1 > this->count)
+    if (index > this->count)
     {
         throw std::invalid_argument("Cannot add value at index: " + index);
     }
@@ -94,7 +94,22 @@ void LinkedList<T>::add(T value, int index)
 template<typename T>
 void LinkedList<T>::add(T value)
 {
-    this->add(value, this->count - 1);
+    this->add(value, this->count);
+}
+
+template <typename T>
+T LinkedList<T>::remove(int n)
+{
+    Node<T>* nodeToRemove = this->operator[](n);
+    Node<T>* previousNode = this->operator[](n - 1);
+
+    previousNode->next = nodeToRemove->next;
+
+    nodeToRemove->next = nullptr;
+    T value = *nodeToRemove->value;
+    delete nodeToRemove;
+
+    return value;
 }
 
 template<typename T>

@@ -22,6 +22,8 @@ public:
     void add(T value, int index);
     void add(T value);
 
+    T remove(int n);
+
     Node<T>* operator[](int index);
 
 };

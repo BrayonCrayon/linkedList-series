@@ -50,3 +50,31 @@ TEST(linked_list_basic_operations, it_will_default_to_adding_value_to_end_of_lis
     EXPECT_NE(list.item, nullptr);
     EXPECT_EQ(*list.item->value, 100);
 }
+
+TEST(linked_list_basic_operations, it_delets_node_from_middle_of_list)
+{
+    LinkedList<int> list;
+
+    list.add(1);
+    list.add(2);
+    list.add(3);
+
+    int removedValue = list.remove(1);
+
+    ASSERT_EQ(*list[0]->value, 1);
+    ASSERT_EQ(*list[1]->value, 3);
+    ASSERT_EQ(removedValue, 2);
+}
+
+TEST(linked_list_basic_operations, it_configures_list_as_expected)
+{
+    LinkedList<int> list;
+
+    list.add(1);
+    list.add(2);
+    list.add(3);
+
+    ASSERT_EQ(*list[0]->value, 1);
+    ASSERT_EQ(*list[1]->value, 2);
+    ASSERT_EQ(*list[2]->value, 3);
+}
