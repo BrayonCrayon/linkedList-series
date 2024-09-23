@@ -66,6 +66,15 @@ TEST(linked_list_basic_operations, it_delets_node_from_middle_of_list)
     ASSERT_EQ(removedValue, 2);
 }
 
+TEST(linked_list_basic_operations, it_throws_error_when_value_doesnt_exist)
+{
+    LinkedList<int> list;
+
+    EXPECT_ANY_THROW({
+        list.remove(1);
+    });
+}
+
 TEST(linked_list_basic_operations, it_configures_list_as_expected)
 {
     LinkedList<int> list;

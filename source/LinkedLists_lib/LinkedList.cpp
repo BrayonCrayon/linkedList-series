@@ -101,6 +101,12 @@ template <typename T>
 T LinkedList<T>::remove(int n)
 {
     Node<T>* nodeToRemove = this->operator[](n);
+
+    if(nodeToRemove == nullptr)
+    {
+        throw std::invalid_argument("cannot find node to remove");
+    }
+
     Node<T>* previousNode = this->operator[](n - 1);
 
     previousNode->next = nodeToRemove->next;
