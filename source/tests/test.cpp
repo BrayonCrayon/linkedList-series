@@ -10,4 +10,17 @@
 #include "LinkedListOperatorsTests.cpp"
 #include "LinkedListBasicOperationTests.cpp"
 
+// TODO: Ideas
+/**
+ * - Remove by actual Node reference
+ * - Implement iterators
+ * - Implement smart pointers
+ * - Sorting based off of callback
+ * - Filter down a list and return a new list based on the callback
+ * - Introduce double Linked list
+ * - Update interactors to account for going backwards
+ * - Introduce circular linked list
+ *
+ */
+
 #endif

@@ -59,13 +59,3 @@ TEST(initialization_tests, be_able_to_copy_linked_list_to_another_linked_list)
     }
     EXPECT_EQ(A.count, B.count);
 }
-
-TEST(initialization_tests, for_another_day)
-{
-    // A = listing being copied
-    // B = new linked list
-
-    // get count of nodes in linked list A
-    // for loop for all nodes where i < count
-    // copy data from a[i] to new node
-}
