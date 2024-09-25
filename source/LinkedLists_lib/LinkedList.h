@@ -12,7 +12,7 @@ class LinkedList
 
 public:
     int count;
-    Node<T>* item;
+    Node<T>* head;
 
     LinkedList();
     explicit LinkedList(T values[], int size);

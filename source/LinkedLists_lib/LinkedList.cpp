@@ -5,18 +5,15 @@
 #include <stdexcept>
 
 template <typename T>
-LinkedList<T>::LinkedList(): count(0), item(nullptr)
+LinkedList<T>::LinkedList(): count(0), head(new Node<T>(nullptr))
 {
 }
 
 template <typename T>
-LinkedList<T>::LinkedList(T values[], int size)
+LinkedList<T>::LinkedList(T values[], int size): count(size), head(new Node<T>(nullptr))
 {
-    count = size;
-    Node<T>* temp;
-    item = new Node(values[0]);
-    temp = item;
-    for (int i = 1; i < size; ++i)
+    Node<T>* temp = head;
+    for (int i = 0; i < size; ++i)
     {
         temp->setNext(values[i]);
         temp = temp->next;
@@ -24,11 +21,10 @@ LinkedList<T>::LinkedList(T values[], int size)
 }
 
 template <typename T>
-LinkedList<T>::LinkedList(const LinkedList& list): count(0), item(nullptr)
+LinkedList<T>::LinkedList(const LinkedList& list): count(0), head(new Node<T>(nullptr))
 {
-    item = new Node(*list.item->value);
-    Node<T>* temp = item;
-    Node<T>* listToCopyIter = list.item->next;
+    Node<T>* temp = head;
+    Node<T>* listToCopyIter = list.head->next;
 
     while (listToCopyIter != nullptr)
     {
@@ -49,7 +45,7 @@ Node<T>* LinkedList<T>::operator[](int index)
 
     int iteratorIndex = 0;
 
-    Node<T>* temp = item;
+    Node<T>* temp = head->next;
     while (temp != nullptr && temp->next != nullptr && iteratorIndex != index)
     {
         temp = temp->next;
@@ -61,9 +57,9 @@ Node<T>* LinkedList<T>::operator[](int index)
 template <typename T>
 void LinkedList<T>::add(T value, int index)
 {
-    if (this->item == nullptr)
+    if (this->head->next == nullptr)
     {
-        this->item = new Node(value);
+        this->head->next = new Node(value);
         ++this->count;
         return;
     }
@@ -86,7 +82,7 @@ void LinkedList<T>::add(T value, int index)
 
     if (previousNode == nullptr)
     {
-        this->item = newNode;
+        this->head->next = newNode;
     }
 
     ++this->count;
@@ -119,9 +115,9 @@ T LinkedList<T>::remove(const int n)
     T value(*nodeToRemove->value);
     delete nodeToRemove;
 
-    if (nodeToRemove == item)
+    if (nodeToRemove == head->next)
     {
-        item = nullptr;
+        head->next = nullptr;
     }
 
     --this->count;
@@ -132,8 +128,5 @@ T LinkedList<T>::remove(const int n)
 template <typename T>
 LinkedList<T>::~LinkedList()
 {
-    if (item != nullptr)
-    {
-        delete item;
-    }
+    delete head->next;
 }
