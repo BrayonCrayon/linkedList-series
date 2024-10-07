@@ -26,6 +26,17 @@ public:
 
     Node<T>* operator[](int index);
 
+    /**
+     * Iterators
+     */
+    typedef std::iterator<std::input_iterator_tag, T> Tacos;
+    // TODO: we are here, the line above does not work?????
+    class Iterator : Tacos
+    {
+
+    };
+
+    Iterator begin();
 };
 
 #endif //LINKEDLIST_H

@@ -9,6 +9,7 @@
  #include "NodeNextTests.cpp"
 #include "LinkedListOperatorsTests.cpp"
 #include "LinkedListBasicOperationTests.cpp"
+#include "InputIteratorTests.cpp"
 
 // TODO: Ideas
 /**

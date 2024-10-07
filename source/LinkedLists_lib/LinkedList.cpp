@@ -95,6 +95,13 @@ void LinkedList<T>::add(T value)
 }
 
 template <typename T>
+typename LinkedList<T>::Iterator LinkedList<T>::begin()
+{
+    return nullptr;
+}
+
+
+template <typename T>
 T LinkedList<T>::remove(const int n)
 {
     Node<T>* nodeToRemove = this->operator[](n);
