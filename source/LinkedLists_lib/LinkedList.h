@@ -29,11 +29,15 @@ public:
     /**
      * Iterators
      */
-    typedef std::iterator<std::input_iterator_tag, T> Tacos;
-    // TODO: we are here, the line above does not work?????
-    class Iterator : Tacos
+    class Iterator
     {
+        Node<T>* current = nullptr;
 
+    public:
+        Iterator(Node<T>* value): current(value) {}
+        Node<T>* operator*() const;
+        Node<T> operator->() const;
+        Iterator& operator++() const;
     };
 
     Iterator begin();

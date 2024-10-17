@@ -9,7 +9,12 @@ TEST(input_iterator_tests, can_instantiate_an_input_iterator)
     LinkedList numberList(values, count);
 
     // create an input iterator from the list
-    LinkedList<int>::Iterator iterator = numberList.begin();
+    LinkedList<int>::Iterator const iterator = numberList.begin();
 
     EXPECT_NE(iterator, nullptr);
+    for(int i = 0; *iterator != nullptr && i < count; ++iterator, ++i)
+    {
+        // EXPECT_EQ(*iterator, ); TODO: check on instance of
+        EXPECT_EQ(*iterator->value, values[i]);
+    }
 }

@@ -97,7 +97,7 @@ void LinkedList<T>::add(T value)
 template <typename T>
 typename LinkedList<T>::Iterator LinkedList<T>::begin()
 {
-    return nullptr;
+    return Iterator(head->next);
 }
 
 
@@ -137,3 +137,43 @@ LinkedList<T>::~LinkedList()
 {
     delete head->next;
 }
+
+/**
+ *********************************************
+ * Input Iterator
+ *********************************************
+ */
+template <typename T>
+Node<T>* LinkedList<T>::Iterator::operator*() const
+{
+    return current;
+}
+
+template <typename T>
+Node<T> LinkedList<T>::Iterator::operator->() const
+{
+    return current;
+}
+
+template <typename T>
+typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator++() const
+{
+    current = current->next;
+    return *this;
+}
+
+template <typename T>
+bool operator!=(const typename LinkedList<T>::Iterator& lhs, const typename LinkedList<T>::Iterator& rhs)
+{
+    return !(lhs == rhs);
+}
+
+template <typename T>
+bool operator==(const typename LinkedList<T>::Iterator& lhs, const typename LinkedList<T>::Iterator& rhs)
+{
+    return false;
+}
+
+
+
+
