@@ -16,3 +16,14 @@ TEST(input_iterator_tests, can_instantiate_an_input_iterator)
         EXPECT_EQ(*iterator->value, values[i]);
     }
 }
+
+TEST(input_iterator_tests, can_instantiate_a_comparision_operator)
+{
+    constexpr int count = 5;
+    int values[count]{1,2,3,4,5};
+    LinkedList<int> numberList(values, count);
+    LinkedList<int>::Iterator iterator1 = numberList.begin();
+    LinkedList<int>::Iterator iterator2 = numberList.begin();
+
+    EXPECT_TRUE(iterator1 == iterator2);
+}

@@ -38,6 +38,11 @@ public:
         Node<T>* operator*() const;
         Node<T>* operator->() const;
         Iterator& operator++();
+        // template <typename U>
+        // friend bool operator==(const Iterator& lhs, const typename LinkedList<U>::Iterator& rhs)
+        // {
+        //     return false;
+        // }
     };
 
     Iterator begin();
