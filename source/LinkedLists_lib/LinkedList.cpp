@@ -150,13 +150,13 @@ Node<T>* LinkedList<T>::Iterator::operator*() const
 }
 
 template <typename T>
-Node<T> LinkedList<T>::Iterator::operator->() const
+Node<T>* LinkedList<T>::Iterator::operator->() const
 {
     return current;
 }
 
 template <typename T>
-typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator++() const
+typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator++()
 {
     current = current->next;
     return *this;

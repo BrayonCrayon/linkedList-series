@@ -36,8 +36,8 @@ public:
     public:
         Iterator(Node<T>* value): current(value) {}
         Node<T>* operator*() const;
-        Node<T> operator->() const;
-        Iterator& operator++() const;
+        Node<T>* operator->() const;
+        Iterator& operator++();
     };
 
     Iterator begin();
