@@ -161,20 +161,3 @@ typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator++()
     current = current->next;
     return *this;
 }
-
-template <typename T>
-bool operator!=(const typename LinkedList<T>::Iterator& lhs, const typename LinkedList<T>::Iterator& rhs)
-{
-    return !(lhs == rhs);
-}
-
-// TODO: I have no idea why I cannot template this guy
-// template <typename T, typename U>
-bool operator==(const typename LinkedList<int>::Iterator& lhs, const typename LinkedList<int>::Iterator& rhs)
-{
-    return *lhs->value == *rhs->value;
-}
-
-
-
-

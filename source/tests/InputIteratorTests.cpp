@@ -17,7 +17,7 @@ TEST(input_iterator_tests, can_instantiate_an_input_iterator)
     }
 }
 
-TEST(input_iterator_tests, can_instantiate_a_comparision_operator)
+TEST(input_iterator_tests, can_instantiate_a_number_comparision_operator)
 {
     constexpr int count = 5;
     int values[count]{1,2,3,4,5};
@@ -26,4 +26,26 @@ TEST(input_iterator_tests, can_instantiate_a_comparision_operator)
     LinkedList<int>::Iterator iterator2 = numberList.begin();
 
     EXPECT_TRUE(iterator1 == iterator2);
+}
+
+TEST(input_iterator_tests, can_instantiate_a_string_comparision_operator)
+{
+    constexpr int count = 5;
+    string values[count]{"1", "2", "3", "4", "5"};
+    LinkedList<string> stringList(values, count);
+    LinkedList<string>::Iterator iterator1 = stringList.begin();
+    LinkedList<string>::Iterator iterator2 = stringList.begin();
+
+    EXPECT_TRUE(iterator1 == iterator2);
+}
+
+TEST(input_iterator_tests, can_instantiate_a_string_comparision_operator_snickers)
+{
+    constexpr int count = 5;
+    string values[count]{"1", "2", "3", "4", "5"};
+    LinkedList<string> stringList(values, count);
+    LinkedList<string>::Iterator iterator1 = stringList.begin();
+    LinkedList<string>::Iterator iterator2 = stringList.begin();
+
+    EXPECT_FALSE(iterator1 != iterator2);
 }
