@@ -161,3 +161,15 @@ typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator++()
     current = current->next;
     return *this;
 }
+
+template <typename T>
+bool LinkedList<T>::Iterator::operator==(const Iterator& other)
+{
+    return current == other.current;
+}
+
+template <typename T>
+bool LinkedList<T>::Iterator::operator!=(const Iterator& other)
+{
+    return !(current == other.current);
+}

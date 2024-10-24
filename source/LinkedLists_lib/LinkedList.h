@@ -38,13 +38,8 @@ public:
         Node<T>* operator*() const;
         Node<T>* operator->() const;
         Iterator& operator++();
-        bool operator==(const Iterator& other) const {
-            return current == other.current;
-        }
-
-        bool operator!=(const Iterator& other) const {
-            return !(current == other.current);
-        }
+        bool operator==(const Iterator& other);
+        bool operator!=(const Iterator& other);
     };
 
     Iterator begin();
