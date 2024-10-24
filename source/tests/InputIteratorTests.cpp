@@ -17,7 +17,7 @@ TEST(input_iterator_tests, can_instantiate_an_input_iterator)
     }
 }
 
-TEST(input_iterator_tests, can_instantiate_a_number_comparision_operator)
+TEST(input_iterator_tests, can_instantiate_a_number_comparison_operator)
 {
     constexpr int count = 5;
     int values[count]{1,2,3,4,5};
@@ -28,7 +28,7 @@ TEST(input_iterator_tests, can_instantiate_a_number_comparision_operator)
     EXPECT_TRUE(iterator1 == iterator2);
 }
 
-TEST(input_iterator_tests, can_instantiate_a_string_comparision_operator)
+TEST(input_iterator_tests, can_instantiate_a_string_comparison_operator)
 {
     constexpr int count = 5;
     string values[count]{"1", "2", "3", "4", "5"};
@@ -39,7 +39,23 @@ TEST(input_iterator_tests, can_instantiate_a_string_comparision_operator)
     EXPECT_TRUE(iterator1 == iterator2);
 }
 
-TEST(input_iterator_tests, can_instantiate_a_string_comparision_operator_snickers)
+TEST(input_iterator_tests, can_instantiate_a_string_not_comparison_operator)
+{
+    constexpr int count = 5;
+    string values[count]{"1", "2", "3", "4", "5"};
+    string incorrectSet[count]{"5", "4", "7", "5", "7"};
+    LinkedList<string> stringList(values, count);
+    LinkedList<string> secondStringList(values, count);
+    LinkedList<string>::Iterator iterator1 = stringList.begin();
+    LinkedList<string>::Iterator iterator2 = secondStringList.begin();
+
+    for(int i = 0; i < count; ++i, ++iterator1, ++iterator2)
+    {
+        EXPECT_TRUE(iterator1 != iterator2);
+    }
+}
+
+TEST(input_iterator_tests, can_instantiate_a_string_not_comparison_operator_with_the_same_list)
 {
     constexpr int count = 5;
     string values[count]{"1", "2", "3", "4", "5"};
@@ -47,5 +63,8 @@ TEST(input_iterator_tests, can_instantiate_a_string_comparision_operator_snicker
     LinkedList<string>::Iterator iterator1 = stringList.begin();
     LinkedList<string>::Iterator iterator2 = stringList.begin();
 
-    EXPECT_FALSE(iterator1 != iterator2);
+    for(int i = 0; i < count; ++i, ++iterator1, ++iterator2)
+    {
+        EXPECT_FALSE(iterator1 != iterator2);
+    }
 }
