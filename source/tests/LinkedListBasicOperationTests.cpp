@@ -137,3 +137,17 @@ TEST(linked_list_basic_operations, will_return_bad_value_if_node_does_not_exist_
 
     EXPECT_EQ(-1, indexOfNode);
 }
+
+TEST(linked_list_basic_operations, will_return_correct_index_when_list_is_manipulated)
+{
+    int count = 5;
+    int values[count]{1,2,3,4,5};
+    LinkedList numberList(values, count);
+
+    numberList.remove(0);
+    numberList.remove(2);
+
+    const int indexOfNode = numberList.indexOf(numberList[2]);
+
+    EXPECT_EQ(2, indexOfNode);
+}

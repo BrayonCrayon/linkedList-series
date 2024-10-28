@@ -133,6 +133,8 @@ T LinkedList<T>::remove(const int n)
 
     Node<T>* previousNode = this->operator[](n - 1);
 
+    // todo - nodeToRemove->next is not nullptr, but previousNode is!
+    // (see will_return_correct_index_when_list_is_manipulated)
     if (nodeToRemove->next != nullptr)
     {
         previousNode->next = nodeToRemove->next;
