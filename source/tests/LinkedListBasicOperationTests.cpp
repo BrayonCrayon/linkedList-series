@@ -111,3 +111,29 @@ TEST(linked_list_basic_operations, it_configures_list_as_expected)
     ASSERT_EQ(*list[1]->value, 2);
     ASSERT_EQ(*list[2]->value, 3);
 }
+
+TEST(linked_list_basic_operations, will_be_able_to_get_index_from_node_reference)
+{
+    int count = 5;
+    int values[count]{1,2,3,4,5};
+    LinkedList numberList(values, count);
+
+    Node<int>* node = numberList[2];
+
+    const int indexOfNode = numberList.indexOf(node);
+
+    EXPECT_EQ(2, indexOfNode);
+}
+
+TEST(linked_list_basic_operations, will_return_bad_value_if_node_does_not_exist_in_list)
+{
+    int count = 5;
+    int values[count]{1,2,3,4,5};
+    LinkedList numberList(values, count);
+
+    auto node = new Node<int>(99);
+
+    const int indexOfNode = numberList.indexOf(node);
+
+    EXPECT_EQ(-1, indexOfNode);
+}

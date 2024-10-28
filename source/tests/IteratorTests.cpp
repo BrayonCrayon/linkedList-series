@@ -2,7 +2,7 @@
 // Created by bradyderoy on 10/7/24.
 //
 
-TEST(input_iterator_tests, can_instantiate_an_input_iterator)
+TEST(iterator_tests, can_instantiate_an_input_iterator)
 {
     constexpr int count = 5;
     int values[count]{1,2,3,4,5};
@@ -17,7 +17,7 @@ TEST(input_iterator_tests, can_instantiate_an_input_iterator)
     }
 }
 
-TEST(input_iterator_tests, can_instantiate_a_number_comparison_operator)
+TEST(iterator_tests, can_instantiate_a_number_comparison_operator)
 {
     constexpr int count = 5;
     int values[count]{1,2,3,4,5};
@@ -28,7 +28,7 @@ TEST(input_iterator_tests, can_instantiate_a_number_comparison_operator)
     EXPECT_TRUE(iterator1 == iterator2);
 }
 
-TEST(input_iterator_tests, can_instantiate_a_string_comparison_operator)
+TEST(iterator_tests, can_instantiate_a_string_comparison_operator)
 {
     constexpr int count = 5;
     string values[count]{"1", "2", "3", "4", "5"};
@@ -39,7 +39,7 @@ TEST(input_iterator_tests, can_instantiate_a_string_comparison_operator)
     EXPECT_TRUE(iterator1 == iterator2);
 }
 
-TEST(input_iterator_tests, can_instantiate_a_string_not_comparison_operator)
+TEST(iterator_tests, can_instantiate_a_string_not_comparison_operator)
 {
     constexpr int count = 5;
     string values[count]{"1", "2", "3", "4", "5"};
@@ -55,7 +55,7 @@ TEST(input_iterator_tests, can_instantiate_a_string_not_comparison_operator)
     }
 }
 
-TEST(input_iterator_tests, can_instantiate_a_string_not_comparison_operator_with_the_same_list)
+TEST(iterator_tests, can_instantiate_a_string_not_comparison_operator_with_the_same_list)
 {
     constexpr int count = 5;
     string values[count]{"1", "2", "3", "4", "5"};
@@ -66,5 +66,25 @@ TEST(input_iterator_tests, can_instantiate_a_string_not_comparison_operator_with
     for(int i = 0; i < count; ++i, ++iterator1, ++iterator2)
     {
         EXPECT_FALSE(iterator1 != iterator2);
+    }
+}
+
+TEST(iterator_tests, can_overwrite_existing_value_in_iterator)
+{
+    constexpr int count = 5;
+    int values[count]{1, 2, 3, 4, 5};
+    int expectValues[count]{5, 10, 15, 20, 25};
+    LinkedList<int> list(values, count);
+    LinkedList<int>::Iterator iterator = list.begin();
+
+    for(int i = 0; i < count; ++i, ++iterator)
+    {
+        iterator = (values[i] * 5);
+    }
+
+    iterator = list.begin();
+    for(int i = 0; i < count; ++i, ++iterator)
+    {
+        EXPECT_EQ(expectValues[i], *iterator->value);
     }
 }

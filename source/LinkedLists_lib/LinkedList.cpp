@@ -55,6 +55,26 @@ Node<T>* LinkedList<T>::operator[](int index)
 }
 
 template <typename T>
+int LinkedList<T>::indexOf(Node<T>* node)
+{
+    Node<T>* current = this->head->next;
+    int index = 0;
+
+    while(current != nullptr)
+    {
+        if(current == node)
+        {
+            return index;
+        }
+
+        current = current->next;
+        index++;
+    }
+
+    return -1;
+}
+
+template <typename T>
 void LinkedList<T>::add(T value, int index)
 {
     if (this->head->next == nullptr)
@@ -172,4 +192,14 @@ template <typename T>
 bool LinkedList<T>::Iterator::operator!=(const Iterator& other)
 {
     return !(current == other.current);
+}
+
+template <typename T>
+typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator=(const T value)
+{
+    delete this->current->value;
+
+    this->current->value = new T(value);
+
+    return *this;
 }

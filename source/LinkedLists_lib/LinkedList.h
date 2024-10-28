@@ -26,6 +26,8 @@ public:
 
     Node<T>* operator[](int index);
 
+    int indexOf(Node<T>*);
+
     /**
      * Iterators
      */
@@ -40,6 +42,7 @@ public:
         Iterator& operator++();
         bool operator==(const Iterator& other);
         bool operator!=(const Iterator& other);
+        Iterator& operator=(const T);
     };
 
     Iterator begin();
