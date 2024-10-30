@@ -163,3 +163,13 @@ TEST(linked_list_basic_operations, will_remove_node_even_when_previous_is_null)
     EXPECT_EQ(4, numberList.count);
     EXPECT_EQ(2, *numberList[0]->value);
 }
+
+TEST(linked_list_basic_operations, will_throw_an_error_when_retriving_an_item_from_an_empty_list)
+{
+    int values[0];
+    LinkedList<int> numberList(values, 0);
+
+    EXPECT_ANY_THROW({
+        numberList[0];
+    });
+}

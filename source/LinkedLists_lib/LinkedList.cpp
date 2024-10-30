@@ -46,12 +46,18 @@ Node<T>* LinkedList<T>::operator[](int index)
     int iteratorIndex = 0;
 
     Node<T>* temp = head->next;
-    while (temp != nullptr && temp->next != nullptr && iteratorIndex != index)
+    while (temp != nullptr)
     {
+        if(index == iteratorIndex )
+        {
+            return temp;
+        }
+
         temp = temp->next;
         ++iteratorIndex;
     }
-    return temp;
+
+    throw std::out_of_range("cannot find node to remove");
 }
 
 template <typename T>
@@ -87,6 +93,14 @@ void LinkedList<T>::add(T value, int index)
     if (index > this->count)
     {
         throw std::invalid_argument("Cannot add value at index: " + index);
+    }
+
+    if (index == this->count)
+    {
+        Node<T>* lastNode = this->operator[](index - 1);
+        lastNode->next = new Node(value);
+        ++this->count;
+        return;
     }
 
     Node<T>* movingNode = this->operator[](index);
@@ -131,20 +145,10 @@ T LinkedList<T>::remove(const int n)
         throw std::invalid_argument("cannot find node to remove");
     }
 
-    Node<T>* previousNode;
+    Node<T>* previousNode = n == 0
+        ? this->head
+        : this->operator[](n - 1);
 
-    if(n==0)
-    {
-        previousNode = this->head;
-    }
-    else
-    {
-        previousNode = this->operator[](n - 1);
-
-    }
-
-    // todo - nodeToRemove->next is not nullptr, but previousNode is!
-    // (see will_return_correct_index_when_list_is_manipulated)
     if (nodeToRemove->next != nullptr)
     {
         previousNode->next = nodeToRemove->next;

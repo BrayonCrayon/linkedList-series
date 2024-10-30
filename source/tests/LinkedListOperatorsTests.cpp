@@ -19,5 +19,7 @@ TEST(linked_list_operators, square_brakets_operator_will_return_nullptr_when_no_
 {
     LinkedList<int> list;
 
-    EXPECT_EQ(list[0], nullptr);
+    EXPECT_ANY_THROW({
+        list[0];
+    });
 }
