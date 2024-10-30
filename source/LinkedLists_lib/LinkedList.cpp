@@ -131,7 +131,17 @@ T LinkedList<T>::remove(const int n)
         throw std::invalid_argument("cannot find node to remove");
     }
 
-    Node<T>* previousNode = this->operator[](n - 1);
+    Node<T>* previousNode;
+
+    if(n==0)
+    {
+        previousNode = this->head;
+    }
+    else
+    {
+        previousNode = this->operator[](n - 1);
+
+    }
 
     // todo - nodeToRemove->next is not nullptr, but previousNode is!
     // (see will_return_correct_index_when_list_is_manipulated)

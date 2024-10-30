@@ -151,3 +151,15 @@ TEST(linked_list_basic_operations, will_return_correct_index_when_list_is_manipu
 
     EXPECT_EQ(2, indexOfNode);
 }
+
+TEST(linked_list_basic_operations, will_remove_node_even_when_previous_is_null)
+{
+    int count = 5;
+    int values[count]{1,2,3,4,5};
+    LinkedList numberList(values, count);
+
+    numberList.remove(0);
+
+    EXPECT_EQ(4, numberList.count);
+    EXPECT_EQ(2, *numberList[0]->value);
+}
