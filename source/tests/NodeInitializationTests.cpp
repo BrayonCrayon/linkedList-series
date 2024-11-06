@@ -38,4 +38,16 @@ TEST(node_initialization_tests, one_arg_string_value_constructor)
     EXPECT_EQ(*testNode.value, testStr);
 }
 
+TEST(node_initialization_tests, constructor_to_setup_current_next_and_previous_nodes)
+{
+    int currentValue = 12;
+    int previousValue = 11;
+    int nextValue = 13;
+
+    const Node node(currentValue, previousValue, nextValue);
+
+    EXPECT_EQ(*node.value, currentValue);
+    EXPECT_EQ(*node.next->value, nextValue);
+    EXPECT_EQ(*node.previous->value, previousValue);
+}
 

@@ -4,8 +4,11 @@
 
 #include <Node.h>
 
+template <typename T>
+Node<T>::Node(T value, T previous, T next) : value(new T(value)), previous(new Node(previous)), next(new Node(next)){}
+
 template<typename T>
-Node<T>::Node(T* pValue) : value(pValue), next(nullptr), previous(nullptr) {}
+Node<T>::Node(T* pValue) : value(pValue), previous(nullptr), next(nullptr) {}
 
 template<typename T>
 Node<T>::Node(T value): value(new T(value)) {}
