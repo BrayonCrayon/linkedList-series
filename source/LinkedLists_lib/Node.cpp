@@ -29,3 +29,9 @@ void Node<T>::setNext(T value)
     next = new Node(value);
 }
 
+template <typename T>
+void Node<T>::setPrevious(T value)
+{
+    previous = new Node(value);
+}
+
