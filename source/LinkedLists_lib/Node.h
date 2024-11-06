@@ -11,12 +11,14 @@ class Node {
 public:
     T* value;
     Node* next;
+    Node* previous;
     explicit Node(T* pValue = nullptr);
     explicit Node(T value);
     ~Node();
     Node* operator=(Node* rhs);
 
     void setNext(T value);
+    void setPrevious(T value);
 };
 
 

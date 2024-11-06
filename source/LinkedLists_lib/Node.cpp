@@ -5,7 +5,7 @@
 #include <Node.h>
 
 template<typename T>
-Node<T>::Node(T* pValue) : value(pValue), next(nullptr) {}
+Node<T>::Node(T* pValue) : value(pValue), next(nullptr), previous(nullptr) {}
 
 template<typename T>
 Node<T>::Node(T value): value(new T(value)) {}
@@ -28,5 +28,4 @@ void Node<T>::setNext(T value)
 {
     next = new Node(value);
 }
-
 

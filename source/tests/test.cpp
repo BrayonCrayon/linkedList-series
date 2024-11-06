@@ -10,6 +10,7 @@
 #include "LinkedListOperatorsTests.cpp"
 #include "LinkedListBasicOperationTests.cpp"
 #include "IteratorTests.cpp"
+#include "NodePreviousTests.cpp"
 
 // TODO: Ideas
 /**
