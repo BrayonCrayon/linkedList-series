@@ -16,8 +16,9 @@ LinkedList<T>::LinkedList(T values[], int size): count(size), head(new Node<T>(n
     Node<T>* previous = nullptr;
     for (int i = 0; i < size; ++i)
     {
-        temp->setNext(values[i]);
+        temp->value = new T(values[i]);
         previous = temp;
+        temp->next = new Node<T>(nullptr);
         temp = temp->next;
         temp->previous = previous;
     }
@@ -27,7 +28,7 @@ template <typename T>
 LinkedList<T>::LinkedList(const LinkedList& list): count(0), head(new Node<T>(nullptr))
 {
     Node<T>* temp = head;
-    Node<T>* listToCopyIter = list.head->next;
+    Node<T>* listToCopyIter = list.head;
     Node<T>* previous = nullptr;
 
     while (listToCopyIter != nullptr)

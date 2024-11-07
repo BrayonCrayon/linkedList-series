@@ -184,3 +184,26 @@ TEST(linked_list_basic_operations, will_assign_previouses_properly_when_adding_a
     EXPECT_EQ(list[0]->previous, list.head);
 }
 
+TEST(linked_list_basic_operations, it_snickers_)
+{
+    int count = 5;
+    int values[count]{1,2,3,4,5};
+    LinkedList numberList(values, count);
+
+    numberList.add(99, 3);
+
+    for(int i = 0; i < numberList.count; i++)
+    {
+        EXPECT_EQ(numberList[i]->next, numberList[i + 1]);
+        EXPECT_EQ(numberList[i]->previous, numberList[i - 1]);
+    }
+}
+
+TEST(linked_list_basic_operations, it_adds_to_end)
+{
+    int count = 5;
+    int values[count]{1,2,3,4,5};
+    LinkedList numberList(values, count);
+
+    numberList.add(99);
+}

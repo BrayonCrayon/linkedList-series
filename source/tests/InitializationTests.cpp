@@ -17,11 +17,7 @@ TEST(initialization_tests, one_arg_constructor)
     const LinkedList list(values, 1);
 
     EXPECT_EQ(list.count, 1);
-    EXPECT_EQ(list.head->value, nullptr);
-
-    Node<int>* firstItem = list.head->next;
-
-    EXPECT_EQ(*firstItem->value, values[0]);
+    EXPECT_EQ(*list.head->value, 1);
 }
 
 TEST(initialization_tests, be_able_to_setup_linked_list)
@@ -32,7 +28,7 @@ TEST(initialization_tests, be_able_to_setup_linked_list)
 
     EXPECT_EQ(list.count, count);
 
-    Node<int>* currentNode = list.head->next;
+    Node<int>* currentNode = list.head;
     for(auto value: values)
     {
         EXPECT_EQ(*currentNode->value, value);
@@ -40,6 +36,7 @@ TEST(initialization_tests, be_able_to_setup_linked_list)
     }
 }
 
+// todo we are here! :)
 TEST(initialization_tests, be_able_to_copy_linked_list_to_another_linked_list)
 {
     int count = 5;
@@ -48,8 +45,8 @@ TEST(initialization_tests, be_able_to_copy_linked_list_to_another_linked_list)
     LinkedList A(values, count);
     LinkedList B(A);
 
-    Node<int>* aIter = A.head->next;
-    Node<int>* bIter = B.head->next;
+    Node<int>* aIter = A.head;
+    Node<int>* bIter = B.head;
 
     for(int i = 0; i < count; ++i)
     {
