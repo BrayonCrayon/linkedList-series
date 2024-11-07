@@ -59,3 +59,27 @@ TEST(initialization_tests, be_able_to_copy_linked_list_to_another_linked_list)
     }
     EXPECT_EQ(A.count, B.count);
 }
+
+TEST(initialization_tests, basic_constructor_will_initialize_list_with_next_and_previous_nodes)
+{
+    constexpr int count(2);
+    int values[count]{1,2};
+
+    LinkedList list(values, count);
+
+    EXPECT_EQ(list[0]->next, list[1]);
+    EXPECT_EQ(list[1]->previous, list[0]);
+}
+
+TEST(initialization_tests, copy_constructor_will_initialize_list_with_next_and_previous_nodes)
+{
+    int count = 5;
+    int values[count] = {1, 2, 3, 4, 5};
+
+    LinkedList A(values, count);
+    LinkedList B(A);
+
+    EXPECT_EQ(B[0]->next, B[1]);
+    EXPECT_EQ(B[1]->previous, B[0]);
+    EXPECT_EQ(A.count, B.count);
+}

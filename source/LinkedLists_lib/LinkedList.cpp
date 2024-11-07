@@ -13,10 +13,13 @@ template <typename T>
 LinkedList<T>::LinkedList(T values[], int size): count(size), head(new Node<T>(nullptr))
 {
     Node<T>* temp = head;
+    Node<T>* previous = nullptr;
     for (int i = 0; i < size; ++i)
     {
         temp->setNext(values[i]);
+        previous = temp;
         temp = temp->next;
+        temp->previous = previous;
     }
 }
 
@@ -25,13 +28,16 @@ LinkedList<T>::LinkedList(const LinkedList& list): count(0), head(new Node<T>(nu
 {
     Node<T>* temp = head;
     Node<T>* listToCopyIter = list.head->next;
+    Node<T>* previous = nullptr;
 
     while (listToCopyIter != nullptr)
     {
         temp->setNext(*listToCopyIter->value);
+        previous = temp;
         temp = temp->next;
-        ++this->count;
+        temp->previous = previous;
         listToCopyIter = listToCopyIter->next;
+        ++this->count;
     }
 }
 
