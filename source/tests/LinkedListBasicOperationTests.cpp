@@ -173,3 +173,14 @@ TEST(linked_list_basic_operations, will_throw_an_error_when_retriving_an_item_fr
         numberList[0];
     });
 }
+
+TEST(linked_list_basic_operations, will_assign_previouses_properly_when_adding_an_element_for_the_first_time)
+{
+    int values[0];
+    LinkedList<int> list(values, 0);
+
+    list.add(2);
+
+    EXPECT_EQ(list[0]->previous, list.head);
+}
+

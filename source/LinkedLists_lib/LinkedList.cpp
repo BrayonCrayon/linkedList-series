@@ -91,8 +91,11 @@ void LinkedList<T>::add(T value, int index)
 {
     if (this->head->next == nullptr)
     {
-        this->head->next = new Node(value);
+        auto newNode = new Node(value);
+        this->head->next = newNode;
+        newNode->previous = this->head;
         ++this->count;
+
         return;
     }
 
