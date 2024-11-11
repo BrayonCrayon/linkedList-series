@@ -57,8 +57,8 @@ Node<T>* LinkedList<T>::operator[](int index)
 
     int iteratorIndex = 0;
 
-    Node<T>* temp = head->next;
-    while (temp != nullptr)
+    Node<T>* temp = head;
+    while (temp != nullptr && temp->value != nullptr)
     {
         if(index == iteratorIndex )
         {
