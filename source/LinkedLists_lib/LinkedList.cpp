@@ -95,25 +95,23 @@ int LinkedList<T>::indexOf(Node<T>* node)
 template <typename T>
 void LinkedList<T>::add(T value, int index)
 {
-    if (this->head->next == nullptr)
-    {
-        auto newNode = new Node(value);
-        this->head->next = newNode;
-        newNode->previous = this->head;
-        ++this->count;
-
-        return;
-    }
-
     if (index > this->count)
     {
         throw std::invalid_argument("Cannot add value at index: " + index);
     }
 
+    Node<T>* newNode = new Node(value);
+
     if (index == this->count)
     {
         Node<T>* lastNode = this->operator[](index - 1);
-        lastNode->next = new Node(value);
+        if (lastNode == nullptr)
+        {
+            head = newNode;
+            count++;
+            return;
+        }
+        lastNode->next = newNode;
         ++this->count;
         return;
     }
@@ -121,7 +119,7 @@ void LinkedList<T>::add(T value, int index)
     Node<T>* movingNode = this->operator[](index);
     Node<T>* previousNode = this->operator[](index - 1);
 
-    Node<T>* newNode = new Node(value);
+
     newNode->next = movingNode;
 
     if (previousNode != nullptr)
@@ -131,7 +129,7 @@ void LinkedList<T>::add(T value, int index)
 
     if (previousNode == nullptr)
     {
-        this->head->next = newNode;
+        this->head = newNode;
     }
 
     ++this->count;

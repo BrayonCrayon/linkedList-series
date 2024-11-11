@@ -47,8 +47,8 @@ TEST(linked_list_basic_operations, it_will_default_to_adding_value_to_end_of_lis
     list.add(100);
 
     EXPECT_EQ(list.count, 1);
-    EXPECT_NE(list.head->next, nullptr);
-    EXPECT_EQ(*list.head->next->value, 100);
+    EXPECT_NE(list.head, nullptr);
+    EXPECT_EQ(*list.head->value, 100);
 }
 
 TEST(linked_list_basic_operations, it_delets_node_from_middle_of_list)
